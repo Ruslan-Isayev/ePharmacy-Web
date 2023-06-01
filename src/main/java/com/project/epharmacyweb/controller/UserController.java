@@ -19,7 +19,6 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserService userService;
     private final UserRepository userRepository;
     private final Utility utility;
 
@@ -46,16 +45,29 @@ public class UserController {
             user.setConfirmationStatus("confirmed");
             userRepository.save(user);
             model.addAttribute("message", "Registration confirmed successfully. You can now log in.");
-            return "registration-success";
         } else {
-            return "registration-invalid";
+            model.addAttribute("error", "Registration invalid!");
+        }
+        return "login";
+    }
+
+    @GetMapping("/login-form")
+    public String loginForm(Model model) {
+        model.addAttribute("user", new User());
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String login(@ModelAttribute User user, Model model) {
+        Optional<User> optionalUser = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
+        if (optionalUser.isPresent()) {
+            model.addAttribute("message", "Successfully logged in!");
+            return "login";
+        } else {
+            model.addAttribute("error", "Invalid username or password!");
+            return "login";
         }
     }
 
-    @GetMapping("/user")
-    public String login(Model model) {
-        model.addAttribute("customers", userService.login());
-        return "customers";
-    }
 
 }

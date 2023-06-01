@@ -1,20 +1,78 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Login</title>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 250px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-top: 20px;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .error-message {
+            margin-top: 20px;
+            color: red;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 <h1>Login</h1>
-<!-- Add your login form here -->
+
 <form th:action="@{/login}" method="post">
-  <label for="username">Username:</label>
-  <input type="text" id="username" name="username" required>
-  <br>
-  <label for="password">Password:</label>
-  <input type="password" id="password" name="password" required>
-  <br>
-  <button type="submit">Login</button>
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" required>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <br>
+    <button type="submit">Login</button>
 </form>
+
+<div th:if="${message}" class="message" th:text="${message}"></div>
+<div th:if="${error}" class="error-message" th:text="${error}"></div>
+
 </body>
 </html>
