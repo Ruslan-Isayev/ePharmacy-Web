@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer List</title>
+    <!DOCTYPE html>
+        <meta charset="UTF-8">
+        <title>Customer List</title>
+        <style>
+            body {
+                background-color: #222222; /* Dark gray background */
+                color: #ffffff; /* White text color */
+                padding-top: 80px;
+                font-family: Arial, sans-serif;
+            }
+
+            h1 {
+                margin-top: 30px;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            th, td {
+                padding: 8px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+
+            th {
+                background-color: #343a40;
+                color: #ffffff;
+            }
+
+            tr:nth-child(even) {
+                background-color: #333333; /* Dark gray background */
+            }
+
+            a.button {
+                display: inline-block;
+                padding: 8px 16px;
+                text-decoration: none;
+                background-color: #007bff;
+                color: #ffffff;
+                border-radius: 4px;
+            }
+
+            a.button.delete {
+                background-color: #dc3545;
+            }
+        </style>
+    </head>
+
+<body>
+<h1>Customers</h1>
+<a href="/customers/new" class="button">Add Customer</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>CIF</th>
+        <th>Phone</th>
+        <th>DOB</th>
+        <th>Data Date</th>
+        <th>Active</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer : ${customers}">
+        <td th:text="${customer.id}"></td>
+        <td th:text="${customer.name}"></td>
+        <td th:text="${customer.surname}"></td>
+        <td th:text="${customer.email}"></td>
+        <td th:text="${customer.cif}"></td>
+        <td th:text="${customer.phone}"></td>
+        <td th:text="${customer.dob}"></td>
+        <td th:text="${customer.dataDate}"></td>
+        <td th:text="${customer.active}"></td>
+        <td>
+            <a th:href="@{/customers/edit/{id}(id=${customer.id})}" class="button">Update</a>
+            <a th:href="@{/customers/{id}(id=${customer.id})}" class="button delete">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
