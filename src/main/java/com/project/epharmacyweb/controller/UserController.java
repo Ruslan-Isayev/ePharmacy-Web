@@ -1,6 +1,6 @@
 package com.project.epharmacyweb.controller;
 
-import com.project.epharmacyweb.Utility;
+import com.project.epharmacyweb.utility.Utility;
 import com.project.epharmacyweb.entity.User;
 import com.project.epharmacyweb.repository.UserRepository;
 import com.project.epharmacyweb.service.UserService;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.servlet.http.HttpSession;
 import java.util.Optional;
 import java.util.UUID;
 

@@ -1,4 +1,4 @@
-package com.project.epharmacyweb;
+package com.project.epharmacyweb.utility;
 
 import com.project.epharmacyweb.entity.User;
 import lombok.RequiredArgsConstructor;
