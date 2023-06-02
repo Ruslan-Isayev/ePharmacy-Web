@@ -1,10 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
+    <style>
+        body{
+            margin:0 0 0 0
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(#006663 , #111111);
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        .title {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 20px;
+            color: #fff;
+            background-color: #a445b2;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #fa4299;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-
+<div class="container">
+    <h1 class="title">Home</h1>
+    <div class="buttons">
+        <a th:href="@{/login-form}" class="button">Login</a>
+        <a th:href="@{/register-form}" class="button">Register</a>
+    </div>
+</div>
 </body>
 </html>
