@@ -32,11 +32,16 @@ public class UserController {
 
     @PostMapping("/register")
     public String register(@ModelAttribute User user, Model model) {
+        if (userRepository.findByEmailAndConfirmationStatus(user.getEmail(), "confirmed").isPresent()) {
+            model.addAttribute("error", "Email already exists!");
+            return "registration";
+        }
         user.setConfirmationStatus("pending");
         user.setConfirmationToken(UUID.randomUUID().toString());
         model.addAttribute("user", userRepository.save(user));
         utility.sendConfirmationEmail(user);
-        return "registration-confirmation";
+        model.addAttribute("message", "Registration successful. Please check your email for confirmation.");
+        return "registration";
     }
 
     @GetMapping("/confirm-registration/{confirmationToken}")

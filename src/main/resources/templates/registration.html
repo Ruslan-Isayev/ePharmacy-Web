@@ -224,12 +224,32 @@
 
         .error {
             color: red;
-            margin-bottom: 10px;
+            margin-top: 5px;
         }
 
         .message {
             color: green;
-            margin-bottom: 10px;
+            margin-top: 5px;
+        }
+        .signup-link a.button {
+            display: inline-block;
+            background-color: #fa4299;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .signup-link a.button:hover {
+            background-color: #a445b2;
+            text-decoration: none; /* Remove underline on hover */
+        }
+        .butto{
+            text-decoration: none;
+        }
+        .additional-text {
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -255,8 +275,14 @@
                     <div class="btn-layer"></div>
                     <input type="submit" value="Register">
                 </div>
+                <p th:if="${error}" class="error" th:text="${error}"></p>
+                <p th:if="${message}" class="message" th:text="${message}"></p>
             </form>
         </div>
+    </div>
+    <div class="signup-link">
+        <p class="additional-text">Have an account?
+        <a href="/login-form" class="butto">Login</a></p>
     </div>
 </div>
 </body>

@@ -16,9 +16,10 @@ public class Utility {
         SimpleMailMessage message = new SimpleMailMessage();
         String confirmationToken = user.getConfirmationToken();
         message.setTo(user.getEmail());
+        String link = "http://127.0.0.1:8085/confirm-registration/";
         message.setSubject("Email Confirmation");
         message.setText("Please confirm your email address by clicking the link:\n\n" +
-                "http://127.0.0.1:8085/confirm-registration/" + confirmationToken);
+                link + confirmationToken);
         mailSender.send(message);
     }
 }
